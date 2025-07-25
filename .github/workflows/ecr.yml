@@ -25,7 +25,8 @@ jobs:
         docker login -u AWS --password-stdin 767397885675.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
 
     - name: Build & Push
-      env: { IMAGE_TAG: ${{ github.sha }} }
+      env:
+        IMAGE_TAG: ${{ github.sha }}
       run: |
         IMAGE_URI=767397885675.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/bazifegnshui/main:$IMAGE_TAG
         docker build -t $IMAGE_URI .
